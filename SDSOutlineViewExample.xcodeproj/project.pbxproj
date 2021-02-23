@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,8 @@
 		3618A05125E4EA750073BB8E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618A05025E4EA750073BB8E /* ContentView.swift */; };
 		3618A05325E4EA7F0073BB8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3618A05225E4EA7F0073BB8E /* Assets.xcassets */; };
 		3618A05625E4EA7F0073BB8E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3618A05525E4EA7F0073BB8E /* Preview Assets.xcassets */; };
+		3618A06025E4EAFF0073BB8E /* SDSOutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618A05F25E4EAFF0073BB8E /* SDSOutlineView.swift */; };
+		3618A06825E4F14D0073BB8E /* SwiftUIDebugUtil in Frameworks */ = {isa = PBXBuildFile; productRef = 3618A06725E4F14D0073BB8E /* SwiftUIDebugUtil */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,7 @@
 		3618A05525E4EA7F0073BB8E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3618A05725E4EA7F0073BB8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3618A05825E4EA7F0073BB8E /* SDSOutlineViewExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SDSOutlineViewExample.entitlements; sourceTree = "<group>"; };
+		3618A05F25E4EAFF0073BB8E /* SDSOutlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDSOutlineView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3618A06825E4F14D0073BB8E /* SwiftUIDebugUtil in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +63,7 @@
 				3618A05725E4EA7F0073BB8E /* Info.plist */,
 				3618A05825E4EA7F0073BB8E /* SDSOutlineViewExample.entitlements */,
 				3618A05425E4EA7F0073BB8E /* Preview Content */,
+				3618A05F25E4EAFF0073BB8E /* SDSOutlineView.swift */,
 			);
 			path = SDSOutlineViewExample;
 			sourceTree = "<group>";
@@ -87,6 +92,9 @@
 			dependencies = (
 			);
 			name = SDSOutlineViewExample;
+			packageProductDependencies = (
+				3618A06725E4F14D0073BB8E /* SwiftUIDebugUtil */,
+			);
 			productName = SDSOutlineViewExample;
 			productReference = 3618A04B25E4EA750073BB8E /* SDSOutlineViewExample.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +122,9 @@
 				Base,
 			);
 			mainGroup = 3618A04225E4EA750073BB8E;
+			packageReferences = (
+				3618A06625E4F14D0073BB8E /* XCRemoteSwiftPackageReference "SwiftUIDebugUtil" */,
+			);
 			productRefGroup = 3618A04C25E4EA750073BB8E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -142,6 +153,7 @@
 			files = (
 				3618A05125E4EA750073BB8E /* ContentView.swift in Sources */,
 				3618A04F25E4EA750073BB8E /* SDSOutlineViewExampleApp.swift in Sources */,
+				3618A06025E4EAFF0073BB8E /* SDSOutlineView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +345,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3618A06625E4F14D0073BB8E /* XCRemoteSwiftPackageReference "SwiftUIDebugUtil" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:tyagishi/SwiftUIDebugUtil.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3618A06725E4F14D0073BB8E /* SwiftUIDebugUtil */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3618A06625E4F14D0073BB8E /* XCRemoteSwiftPackageReference "SwiftUIDebugUtil" */;
+			productName = SwiftUIDebugUtil;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3618A04325E4EA750073BB8E /* Project object */;
 }
