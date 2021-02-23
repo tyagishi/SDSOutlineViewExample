@@ -30,7 +30,13 @@ struct ContentView: View {
     }
 }
 
-class OutlineSource: NSObject, NSOutlineViewDataSource, ObservableObject {
+class AnyOutlineSource: NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate {
+    
+}
+
+
+class OutlineSource: NSObject, NSOutlineViewDataSource, NSOutlineViewDelegate, ObservableObject {
+//class OutlineSource: AnyOutlineSource, ObservedObject {
     let parentData = [0,1,2]
     @Published var childData = [
         Range(10...19).map{$0},
@@ -50,7 +56,8 @@ class OutlineSource: NSObject, NSOutlineViewDataSource, ObservableObject {
     }
     func outlineView(_ outlineView: NSOutlineView, objectValueFor tableColumn: NSTableColumn?, byItem item: Any?) -> Any? {
         guard let intValue = item as? Int else { return nil }
-        return String(intValue)
+        let cellValue = String(intValue).appending(tableColumn?.identifier.rawValue ?? "")
+        return cellValue
     }
     
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
@@ -61,9 +68,7 @@ class OutlineSource: NSObject, NSOutlineViewDataSource, ObservableObject {
               intValue < parentData.count else { return "" }
         return childData[intValue][index]
     }
-    
 }
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()

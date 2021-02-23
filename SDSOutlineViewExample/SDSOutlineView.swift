@@ -9,6 +9,7 @@ import SwiftUI
 import AppKit
 
 struct SDSOutlineView: NSViewRepresentable {
+//    associatedtype dataSource = NSOutlineViewDataSource
     
     @ObservedObject var dataSource:OutlineSource
     //var dataSource: OutlineSource
@@ -28,6 +29,7 @@ struct SDSOutlineView: NSViewRepresentable {
         outlineView.usesAlternatingRowBackgroundColors = true
         for columnName in columnNames {
             let newColumn = NSTableColumn(identifier: columnName)
+            newColumn.title = columnName.rawValue
             outlineView.addTableColumn(newColumn)
         }
 
