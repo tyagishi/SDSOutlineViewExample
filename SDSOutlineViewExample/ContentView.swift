@@ -7,18 +7,21 @@
 
 import SwiftUI
 import SwiftUIDebugUtil
+import SDSOutlineView
 
 struct ContentView: View {
     @StateObject var dataSource = OutlineSource()
     var body: some View {
         HStack {
-            Text("Hello, world!")
-                .background(Color.yellow)
-            Button(action: {
-                dataSource.childData[0].append(3)
-            }, label: {
-                Text("add new child")
-            })
+            VStack {
+                Text("Hello, world!")
+                    .background(Color.yellow)
+                Button(action: {
+                    dataSource.childData[0].append(3)
+                }, label: {
+                    Text("add new child in first node")
+                })
+            }
             SDSOutlineView(dataSource: dataSource,
                            columnNames:[NSUserInterfaceItemIdentifier("name"), NSUserInterfaceItemIdentifier("comment")],
                            delegate: nil)
