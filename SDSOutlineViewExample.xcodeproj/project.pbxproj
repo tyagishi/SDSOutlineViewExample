@@ -11,7 +11,6 @@
 		3618A05125E4EA750073BB8E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618A05025E4EA750073BB8E /* ContentView.swift */; };
 		3618A05325E4EA7F0073BB8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3618A05225E4EA7F0073BB8E /* Assets.xcassets */; };
 		3618A05625E4EA7F0073BB8E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3618A05525E4EA7F0073BB8E /* Preview Assets.xcassets */; };
-		3618A06025E4EAFF0073BB8E /* SDSOutlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618A05F25E4EAFF0073BB8E /* SDSOutlineView.swift */; };
 		3618A06825E4F14D0073BB8E /* SwiftUIDebugUtil in Frameworks */ = {isa = PBXBuildFile; productRef = 3618A06725E4F14D0073BB8E /* SwiftUIDebugUtil */; };
 /* End PBXBuildFile section */
 
@@ -23,7 +22,7 @@
 		3618A05525E4EA7F0073BB8E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3618A05725E4EA7F0073BB8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3618A05825E4EA7F0073BB8E /* SDSOutlineViewExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SDSOutlineViewExample.entitlements; sourceTree = "<group>"; };
-		3618A05F25E4EAFF0073BB8E /* SDSOutlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDSOutlineView.swift; sourceTree = "<group>"; };
+		36C896C425E610BE0058BD2F /* SDSOutlineView */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SDSOutlineView; path = ../../../github/SDSOutlineView; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,13 +56,13 @@
 		3618A04D25E4EA750073BB8E /* SDSOutlineViewExample */ = {
 			isa = PBXGroup;
 			children = (
+				36C896C425E610BE0058BD2F /* SDSOutlineView */,
 				3618A04E25E4EA750073BB8E /* SDSOutlineViewExampleApp.swift */,
 				3618A05025E4EA750073BB8E /* ContentView.swift */,
 				3618A05225E4EA7F0073BB8E /* Assets.xcassets */,
 				3618A05725E4EA7F0073BB8E /* Info.plist */,
 				3618A05825E4EA7F0073BB8E /* SDSOutlineViewExample.entitlements */,
 				3618A05425E4EA7F0073BB8E /* Preview Content */,
-				3618A05F25E4EAFF0073BB8E /* SDSOutlineView.swift */,
 			);
 			path = SDSOutlineViewExample;
 			sourceTree = "<group>";
@@ -153,7 +152,6 @@
 			files = (
 				3618A05125E4EA750073BB8E /* ContentView.swift in Sources */,
 				3618A04F25E4EA750073BB8E /* SDSOutlineViewExampleApp.swift in Sources */,
-				3618A06025E4EAFF0073BB8E /* SDSOutlineView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
