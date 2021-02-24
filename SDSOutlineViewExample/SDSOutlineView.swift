@@ -13,7 +13,11 @@ protocol OutlineNode {
     var isExpandable:Bool { get }
     var children:[OutlineNode] { get }
 }
-class OutlineSource: NSObject, NSOutlineViewDataSource, ObservableObject {
+
+typealias AnyOutlineDataSource = NSObject & NSOutlineViewDataSource & ObservableObject
+//protocol AnyOutlineDataSource:NSObject, NSOutlineViewDataSource, ObservableObject {
+
+class OutlineSource: AnyOutlineDataSource {
 //class OutlineSource: AnyOutlineSource, ObservedObject {
     let parentData = [0,1,2]
     @Published var childData = [ Range(10...19).map{$0}, Range(20...29).map{$0}, Range(30...39).map{$0} ]
@@ -40,15 +44,15 @@ class OutlineSource: NSObject, NSOutlineViewDataSource, ObservableObject {
     }
 }
 
-struct SDSOutlineView: NSViewRepresentable {
+struct SDSOutlineView<DataSource>: NSViewRepresentable where DataSource:AnyOutlineDataSource{
 //    associatedtype dataSource = NSOutlineViewDataSource
     
-    @ObservedObject var dataSource:OutlineSource
+    @ObservedObject var dataSource:DataSource
     //var dataSource: OutlineSource
     let columnNames:[NSUserInterfaceItemIdentifier]
     var delegate: NSOutlineViewDelegate? = nil
     
-    internal init(dataSource: OutlineSource, columnNames: [NSUserInterfaceItemIdentifier], delegate: NSOutlineViewDelegate? = nil) {
+    internal init(dataSource: DataSource, columnNames: [NSUserInterfaceItemIdentifier], delegate: NSOutlineViewDelegate? = nil) {
         self.dataSource = dataSource
         self.columnNames = columnNames
         self.delegate = delegate
