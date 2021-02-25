@@ -58,6 +58,73 @@ class OutlineSource: OutlineDataSourceDelegateObservable {
               intValue < parentData.count else { return "" }
         return childData[intValue][index]
     }
+    
+    // for D&D to re-order
+    func outlineView(_ outlineView: NSOutlineView, pasteboardWriterForItem item: Any) -> NSPasteboardWriting? {
+        let pbItem = NSPasteboardItem()
+        if let value = item as? Int {
+            if value < 10 {
+                // parent
+                pbItem.setString(String(value), forType: sdsOutlineDragDropType)
+            } else {
+                // leaf
+                pbItem.setString(String(value), forType: sdsOutlineDragDropType)
+            }
+        }
+        return pbItem
+    }
+    
+    func outlineView(_ outlineView: NSOutlineView, validateDrop info: NSDraggingInfo, proposedItem item: Any?, proposedChildIndex index: Int) -> NSDragOperation {
+        var valid = true
+        info.enumerateDraggingItems(options: [], for: outlineView, classes: [NSPasteboardItem.self],
+                                    searchOptions: [:]) { (dragItem, index, _) in
+            if let draggedStr = (dragItem.item as! NSPasteboardItem).string(forType: sdsOutlineDragDropType),
+               let draggedInt = Int(draggedStr) {
+                print("draggedValue is \(draggedInt)")
+                if draggedInt > 9 && item == nil {
+                    print("tried to drop leaf on root")
+                    valid = false
+                }
+            }
+        }
+        if valid == false {
+            return []
+        }
+
+        return .move
+    }
+    
+    func outlineView(_ outlineView: NSOutlineView, acceptDrop info: NSDraggingInfo, item: Any?, childIndex index: Int) -> Bool {
+        if item == nil {
+            // drop on root
+            print("drop on root")
+            return true
+        }
+        var moveItem = -1
+        info.enumerateDraggingItems(options: [], for: outlineView, classes: [NSPasteboardItem.self],
+                                    searchOptions: [:]) { (dragItem, index, _) in
+            if let draggedStr = (dragItem.item as! NSPasteboardItem).string(forType: sdsOutlineDragDropType),
+               let draggedInt = Int(draggedStr) {
+                moveItem = draggedInt
+            }
+        }
+        if moveItem < 0 { return false }
+        if let rootValue = item as? Int {
+            print("drop on \(rootValue)")
+            print("leaf index is \(index)")
+            print("drop on leaf")
+
+        } else {
+            print("drop on root: not implemented")
+        }
+        childData[0].removeAll(where: {$0 == moveItem})
+        childData[1].removeAll(where: {$0 == moveItem})
+        childData[2].removeAll(where: {$0 == moveItem})
+
+        return true
+    }
+    
+    
 }
 
 
