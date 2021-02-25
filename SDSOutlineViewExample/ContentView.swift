@@ -108,8 +108,15 @@ class OutlineSource: OutlineDataSourceDelegateObservable {
                 moveItem = draggedInt
             }
         }
+        childData[0].removeAll(where: {$0 == moveItem})
+        childData[1].removeAll(where: {$0 == moveItem})
+        childData[2].removeAll(where: {$0 == moveItem})
+
         if moveItem < 0 { return false }
         if let rootValue = item as? Int {
+            if index != -1 {
+                childData[rootValue].insert(moveItem, at: index)
+            }
             print("drop on \(rootValue)")
             print("leaf index is \(index)")
             print("drop on leaf")
@@ -117,9 +124,6 @@ class OutlineSource: OutlineDataSourceDelegateObservable {
         } else {
             print("drop on root: not implemented")
         }
-        childData[0].removeAll(where: {$0 == moveItem})
-        childData[1].removeAll(where: {$0 == moveItem})
-        childData[2].removeAll(where: {$0 == moveItem})
 
         return true
     }
