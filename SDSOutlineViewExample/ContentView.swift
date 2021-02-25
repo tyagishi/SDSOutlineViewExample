@@ -23,8 +23,7 @@ struct ContentView: View {
                 })
             }
             SDSOutlineView(dataSource: dataSource,
-                           columnNames:[NSUserInterfaceItemIdentifier("name"), NSUserInterfaceItemIdentifier("comment")],
-                           delegate: nil)
+                           columnNames:[NSUserInterfaceItemIdentifier("name"), NSUserInterfaceItemIdentifier("comment")])
                 .frame(maxWidth:.infinity, maxHeight: .infinity)
                 .background(Color.orange)
                 .debugBorder(.red, width: 3)
@@ -33,8 +32,7 @@ struct ContentView: View {
     }
 }
 
-class OutlineSource: OutlineDataSourceObservable {
-//class OutlineSource: AnyOutlineSource, ObservedObject {
+class OutlineSource: OutlineDataSourceDelegateObservable {
     @Published var parentData = [0,1,2]
     @Published var childData = [ Range(10...19).map{$0}, Range(20...29).map{$0}, Range(30...39).map{$0} ]
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
@@ -44,7 +42,9 @@ class OutlineSource: OutlineDataSourceObservable {
     }
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
         if item == nil { return parentData.count }
-        return childData[0].count
+        guard let intValue = item as? Int,
+              intValue < parentData.count else { return 0 }
+        return childData[intValue].count
     }
     func outlineView(_ outlineView: NSOutlineView, objectValueFor tableColumn: NSTableColumn?, byItem item: Any?) -> Any? {
         guard let intValue = item as? Int else { return nil }

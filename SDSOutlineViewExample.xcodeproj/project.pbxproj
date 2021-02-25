@@ -23,6 +23,7 @@
 		3618A05525E4EA7F0073BB8E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3618A05725E4EA7F0073BB8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3618A05825E4EA7F0073BB8E /* SDSOutlineViewExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SDSOutlineViewExample.entitlements; sourceTree = "<group>"; };
+		36B1C5FF25E7559F005453F5 /* SDSOutlineView */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SDSOutlineView; path = ../../github/SDSOutlineView; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +43,7 @@
 			isa = PBXGroup;
 			children = (
 				3618A04D25E4EA750073BB8E /* SDSOutlineViewExample */,
+				36B1C5FF25E7559F005453F5 /* SDSOutlineView */,
 				3618A04C25E4EA750073BB8E /* Products */,
 			);
 			sourceTree = "<group>";
